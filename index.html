@@ -117,24 +117,27 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
   @media(max-width:800px){ .dolor-grid{grid-template-columns:1fr} }
   .dolor-grid .foto{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px -14px rgba(0,0,0,.5)}
 
-  /* ---------- GALERÍA CONTENIDO REAL (carrusel + filtro) ---------- */
+  /* ---------- GALERÍA CONTENIDO REAL (visor + miniaturas) ---------- */
   .galeria-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 4px}
   .chip-btn{background:var(--bg-2);border:1px solid var(--linea);color:var(--tinta-2);font-weight:700;font-size:.82rem;padding:8px 16px;border-radius:999px;cursor:pointer;font:inherit;transition:all .15s ease}
   .chip-btn.on{background:var(--marca);color:#fff;border-color:var(--marca)}
-  .galeria-real{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 4px 6px;scrollbar-width:none;-ms-overflow-style:none}
-  .galeria-real::-webkit-scrollbar{display:none;height:0}
-  .galeria-real figure,.galeria-real .guia-card{flex:0 0 62%;scroll-snap-align:start;background:#fff;border-radius:14px;padding:10px;box-shadow:0 14px 30px -14px rgba(74,50,112,.4);cursor:zoom-in}
-  @media(min-width:640px){ .galeria-real figure,.galeria-real .guia-card{flex-basis:34%} }
-  @media(min-width:960px){ .galeria-real figure,.galeria-real .guia-card{flex-basis:23%} }
-  .galeria-real img{aspect-ratio:3/4;object-fit:cover;border-radius:8px}
-  .galeria-real figcaption{text-align:center;font-size:.78rem;font-weight:700;color:var(--marca-osc);padding:8px 2px 2px}
-  .guia-card{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(160deg,var(--marca) 0%,var(--marca-osc) 100%) !important;color:#fff;padding:22px 18px !important;cursor:default !important}
-  .guia-card .tag{display:inline-block;background:rgba(255,255,255,.18);font-size:.64rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;align-self:flex-start}
-  .guia-card h4{font-size:.95rem;margin-bottom:8px}
-  .guia-card p{font-size:.78rem;line-height:1.4;opacity:.92}
-  .galeria-arrows{display:flex;justify-content:center;gap:14px;margin-top:10px}
-  .galeria-arrow{width:42px;height:42px;border-radius:50%;background:var(--bg-2);border:1px solid var(--linea);color:var(--marca-osc);font-size:1.1rem;font-weight:900;cursor:pointer;display:grid;place-items:center;font:inherit}
-  .galeria-arrow:hover{background:var(--marca);color:#fff;border-color:var(--marca)}
+  .gv-main{display:flex;align-items:center;gap:14px;margin-top:22px}
+  .gv-arrow{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--bg-2);border:1px solid var(--linea);color:var(--marca-osc);font-size:1.2rem;font-weight:900;cursor:pointer;display:grid;place-items:center;font:inherit}
+  .gv-arrow:hover{background:var(--marca);color:#fff;border-color:var(--marca)}
+  .gv-frame{position:relative;flex:1;max-width:380px;margin:0 auto;aspect-ratio:3/4;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--sombra);cursor:zoom-in}
+  .gv-frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .gv-card{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(160deg,var(--marca) 0%,var(--marca-osc) 100%);color:#fff;padding:26px 22px;cursor:default}
+  .gv-card .tag{display:inline-block;background:rgba(255,255,255,.18);font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;align-self:flex-start}
+  .gv-card h4{font-size:1.05rem;margin-bottom:10px}
+  .gv-card p{font-size:.85rem;line-height:1.45;opacity:.92}
+  .gv-contador{position:absolute;bottom:10px;right:10px;background:rgba(36,26,51,.72);color:#fff;font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px}
+  .gv-caption{position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,.94);color:var(--marca-osc);font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px}
+  .gv-thumbs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;padding:0 4px}
+  .gv-thumb{width:52px;height:68px;border-radius:8px;overflow:hidden;border:2px solid transparent;cursor:pointer;opacity:.55;transition:all .15s ease;flex:0 0 auto;background:var(--bg)}
+  .gv-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .gv-thumb.gv-thumb-card{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--marca) 0%,var(--marca-osc) 100%);color:#fff;font-size:1.3rem}
+  .gv-thumb:hover{opacity:.85}
+  .gv-thumb.on{opacity:1;border-color:var(--marca)}
 
   .lightbox{position:fixed;inset:0;background:rgba(36,26,51,.92);display:none;align-items:center;justify-content:center;z-index:90;padding:20px;cursor:zoom-out}
   .lightbox.on{display:flex}
@@ -453,23 +456,12 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
       <button class="chip-btn" data-cat="cartas" type="button">Cartas de Comunicación</button>
       <button class="chip-btn" data-cat="plantillas" type="button">Plantillas de Dibujo</button>
     </div>
-    <div class="galeria-real" id="galeria-real">
-      <div class="guia-card" data-cat="guia">
-        <span class="tag">Extracto de la Guía</span>
-        <h4>Patrón, no señal aislada</h4>
-        <p>¿Se repite? ¿Pasa en más de un contexto? ¿Es un cambio respecto de cómo es siempre? Las 3 preguntas que organizan toda la guía.</p>
-      </div>
-      <figure data-cat="cartas" data-full="img/preview-cartas.jpg"><img src="img/preview-cartas.jpg" alt="Tarjetas feliz, triste, enojado y aburrido"><figcaption>Cartas de Comunicación</figcaption></figure>
-      <figure data-cat="plantillas" data-full="img/preview-plantillas.jpg"><img src="img/preview-plantillas.jpg" alt="Tarjetas de caritas hoja 2"><figcaption>Plantillas de Dibujo</figcaption></figure>
-      <figure data-cat="cartas" data-full="img/preview-cartas-2.jpg"><img src="img/preview-cartas-2.jpg" alt="Tarjetas quiero contarte algo, quiero un abrazo, tengo hambre"><figcaption>Cartas de Comunicación</figcaption></figure>
-      <figure data-cat="plantillas" data-full="img/preview-plantillas-2.jpg"><img src="img/preview-plantillas-2.jpg" alt="Tarjetas de caritas hoja 1"><figcaption>Plantillas de Dibujo</figcaption></figure>
-      <figure data-cat="cartas" data-full="img/preview-cartas-3.jpg"><img src="img/preview-cartas-3.jpg" alt="Tarjetas confundido y avergonzado"><figcaption>Cartas de Comunicación</figcaption></figure>
-      <figure data-cat="plantillas" data-full="img/preview-plantillas-3.jpg"><img src="img/preview-plantillas-3.jpg" alt="Tarjetas de caritas hoja 3"><figcaption>Plantillas de Dibujo</figcaption></figure>
+    <div class="gv-main">
+      <button class="gv-arrow" id="gv-prev" type="button" aria-label="Anterior">‹</button>
+      <div class="gv-frame" id="gv-frame"></div>
+      <button class="gv-arrow" id="gv-next" type="button" aria-label="Siguiente">›</button>
     </div>
-    <div class="galeria-arrows">
-      <button class="galeria-arrow" id="galeria-prev" type="button" aria-label="Anterior">‹</button>
-      <button class="galeria-arrow" id="galeria-next" type="button" aria-label="Siguiente">›</button>
-    </div>
+    <div class="gv-thumbs" id="gv-thumbs"></div>
   </div>
 </section>
 
@@ -834,47 +826,99 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
     setInterval(tickCR, 1000);
   }
 
-  /* ---------- GALERÍA: filtro + flechas + lightbox ---------- */
-  var galeria = document.getElementById('galeria-real');
-  if(galeria){
+  /* ---------- GALERÍA: visor + miniaturas + flechas + lightbox ---------- */
+  var gvFrame = document.getElementById('gv-frame');
+  if(gvFrame){
+    var GV_SLIDES = [
+      {cat:'guia', tipo:'card', titulo:'Extracto de la Guía', texto:'Patrón, no señal aislada: ¿se repite? ¿pasa en más de un contexto? ¿es un cambio respecto de cómo es siempre? Las 3 preguntas que organizan toda la guía.'},
+      {cat:'cartas', tipo:'img', src:'img/preview-cartas.jpg', alt:'Tarjetas feliz, triste, enojado y aburrido', caption:'Cartas de Comunicación'},
+      {cat:'plantillas', tipo:'img', src:'img/preview-plantillas.jpg', alt:'Tarjetas de caritas hoja 2', caption:'Plantillas de Dibujo'},
+      {cat:'cartas', tipo:'img', src:'img/preview-cartas-2.jpg', alt:'Tarjetas quiero contarte algo, quiero un abrazo, tengo hambre', caption:'Cartas de Comunicación'},
+      {cat:'plantillas', tipo:'img', src:'img/preview-plantillas-2.jpg', alt:'Tarjetas de caritas hoja 1', caption:'Plantillas de Dibujo'},
+      {cat:'cartas', tipo:'img', src:'img/preview-cartas-3.jpg', alt:'Tarjetas confundido y avergonzado', caption:'Cartas de Comunicación'},
+      {cat:'plantillas', tipo:'img', src:'img/preview-plantillas-3.jpg', alt:'Tarjetas de caritas hoja 3', caption:'Plantillas de Dibujo'}
+    ];
+    var gvThumbsWrap = document.getElementById('gv-thumbs');
+    var gvChips = document.getElementById('galeria-chips');
+    var gvCatActual = 'todo';
+    var gvIdx = 0;
+
+    var gvVisibles = function(){
+      return GV_SLIDES.map(function(s,i){ return i; })
+        .filter(function(i){ return gvCatActual==='todo' || GV_SLIDES[i].cat===gvCatActual; });
+    };
+
+    var gvPintarThumbs = function(){
+      gvThumbsWrap.innerHTML = '';
+      gvVisibles().forEach(function(i){
+        var s = GV_SLIDES[i];
+        var t = document.createElement('div');
+        t.className = 'gv-thumb' + (s.tipo==='card' ? ' gv-thumb-card' : '') + (i===gvIdx ? ' on' : '');
+        t.setAttribute('data-i', i);
+        if(s.tipo==='img'){
+          var im = document.createElement('img'); im.src = s.src; im.alt = ''; t.appendChild(im);
+        } else {
+          t.textContent = '📖';
+        }
+        t.addEventListener('click', function(){ gvIdx = i; gvPintar(); });
+        gvThumbsWrap.appendChild(t);
+      });
+    };
+
+    var gvPintar = function(){
+      var s = GV_SLIDES[gvIdx];
+      var visibles = gvVisibles();
+      var pos = visibles.indexOf(gvIdx) + 1;
+      if(s.tipo==='img'){
+        gvFrame.innerHTML = '<img src="'+s.src+'" alt="'+s.alt+'">' +
+          '<span class="gv-caption">'+s.caption+'</span>' +
+          '<span class="gv-contador">'+pos+' / '+visibles.length+'</span>';
+        gvFrame.onclick = function(){ abrirLB(s.src, s.alt); };
+      } else {
+        gvFrame.innerHTML = '<div class="gv-card"><span class="tag">'+s.titulo+'</span><h4>Cómo leer las señales</h4><p>'+s.texto+'</p></div>' +
+          '<span class="gv-contador">'+pos+' / '+visibles.length+'</span>';
+        gvFrame.onclick = null;
+      }
+      gvThumbsWrap.querySelectorAll('.gv-thumb').forEach(function(t){
+        t.classList.toggle('on', parseInt(t.getAttribute('data-i'),10) === gvIdx);
+      });
+    };
+
     var lb = document.createElement('div');
     lb.className = 'lightbox';
     lb.innerHTML = '<button type="button" aria-label="Cerrar">&times;</button><img alt="">';
     document.body.appendChild(lb);
     var lbImg = lb.querySelector('img');
-    var abrir = function(src, alt){
-      lbImg.src = src;
-      lbImg.alt = alt || '';
-      lb.classList.add('on');
-    };
-    galeria.addEventListener('click', function(e){
-      var fig = e.target.closest('figure[data-full]');
-      if(fig) abrir(fig.getAttribute('data-full'), fig.querySelector('img').alt);
-    });
+    var abrirLB = function(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('on'); };
     lb.addEventListener('click', function(){ lb.classList.remove('on'); });
 
-    var chips = document.getElementById('galeria-chips');
-    if(chips){
-      chips.addEventListener('click', function(e){
+    document.getElementById('gv-prev').addEventListener('click', function(){
+      var visibles = gvVisibles();
+      var p = visibles.indexOf(gvIdx);
+      gvIdx = visibles[(p - 1 + visibles.length) % visibles.length];
+      gvPintar();
+    });
+    document.getElementById('gv-next').addEventListener('click', function(){
+      var visibles = gvVisibles();
+      var p = visibles.indexOf(gvIdx);
+      gvIdx = visibles[(p + 1) % visibles.length];
+      gvPintar();
+    });
+
+    if(gvChips){
+      gvChips.addEventListener('click', function(e){
         var btn = e.target.closest('.chip-btn');
         if(!btn) return;
-        chips.querySelectorAll('.chip-btn').forEach(function(b){ b.classList.toggle('on', b===btn); });
-        var cat = btn.getAttribute('data-cat');
-        galeria.querySelectorAll('[data-cat]').forEach(function(el){
-          el.style.display = (cat==='todo' || el.getAttribute('data-cat')===cat) ? '' : 'none';
-        });
-        galeria.scrollTo({left:0, behavior:'smooth'});
+        gvChips.querySelectorAll('.chip-btn').forEach(function(b){ b.classList.toggle('on', b===btn); });
+        gvCatActual = btn.getAttribute('data-cat');
+        gvIdx = gvVisibles()[0];
+        gvPintarThumbs();
+        gvPintar();
       });
     }
 
-    var gPrev = document.getElementById('galeria-prev');
-    var gNext = document.getElementById('galeria-next');
-    var galeriaPaso = function(){
-      var slide = galeria.querySelector('[data-cat]:not([style*="display: none"])');
-      return slide ? slide.getBoundingClientRect().width + 18 : 260;
-    };
-    if(gPrev) gPrev.addEventListener('click', function(){ galeria.scrollBy({left:-galeriaPaso(), behavior:'smooth'}); });
-    if(gNext) gNext.addEventListener('click', function(){ galeria.scrollBy({left:galeriaPaso(), behavior:'smooth'}); });
+    gvPintarThumbs();
+    gvPintar();
   }
 
   /* ---------- TABS: qué incluye ---------- */

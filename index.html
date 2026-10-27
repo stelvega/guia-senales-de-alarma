@@ -844,19 +844,14 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-atencion-1.jpg', alt:'Juego ¿Qué cambió? del Pack Mirada Atenta', caption:'Pack Mirada Atenta'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-atencion-2.jpg', alt:'Juego El intruso del Pack Mirada Atenta', caption:'Pack Mirada Atenta'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-espacial-1.jpg', alt:'Juego Simetría del Pack Rompecabezas Visuales', caption:'Pack Rompecabezas Visuales'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-espacial-2.jpg', alt:'Juego Laberinto del Pack Rompecabezas Visuales', caption:'Pack Rompecabezas Visuales'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-lenguaje-1.jpg', alt:'Juego Memoria relámpago del Pack Palabras y Recuerdos', caption:'Pack Palabras y Recuerdos'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-lenguaje-2.jpg', alt:'Juego Ordená la historia del Pack Palabras y Recuerdos', caption:'Pack Palabras y Recuerdos'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-matematica-1.jpg', alt:'Juego Contá y marcá del Pack Números en Acción', caption:'Pack Números en Acción'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-matematica-2.jpg', alt:'Juego ¿Cuál tiene más? del Pack Números en Acción', caption:'Pack Números en Acción'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-objetos-1.jpg', alt:'Juego Encajá cada pieza del Pack Mundo de Objetos', caption:'Pack Mundo de Objetos'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-objetos-2.jpg', alt:'Juego Veo con lupa del Pack Mundo de Objetos', caption:'Pack Mundo de Objetos'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-orientacion-1.jpg', alt:'Juego Flechas que guían del Pack Rumbo y Comandos', caption:'Pack Rumbo y Comandos'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-orientacion-2.jpg', alt:'Juego Izquierda o derecha del Pack Rumbo y Comandos', caption:'Pack Rumbo y Comandos'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-patrones-1.jpg', alt:'Juego Secuencias de números del Pack Ritmos y Repeticiones', caption:'Pack Ritmos y Repeticiones'},
       {cat:'plantillas', tipo:'img', src:'img/preview-pack-patrones-2.jpg', alt:'Juego ¿Qué figura falta? del Pack Ritmos y Repeticiones', caption:'Pack Ritmos y Repeticiones'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-cognitivo-1.jpg', alt:'Juego de patrones del Pack Mente en Movimiento', caption:'Pack Mente en Movimiento'},
-      {cat:'plantillas', tipo:'img', src:'img/preview-pack-cognitivo-2.jpg', alt:'Juego de matemática del Pack Mente en Movimiento', caption:'Pack Mente en Movimiento'}
+      {cat:'plantillas', tipo:'img', src:'img/preview-pack-cognitivo-1.jpg', alt:'Juego de patrones del Pack Mente en Movimiento', caption:'Pack Mente en Movimiento'}
     ];
     var gvThumbsWrap = document.getElementById('gv-thumbs');
     var gvChips = document.getElementById('galeria-chips');
@@ -921,18 +916,14 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
     var abrirLB = function(src, alt){ lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('on'); };
     lb.addEventListener('click', function(){ lb.classList.remove('on'); });
 
-    document.getElementById('gv-prev').addEventListener('click', function(){
+    var gvMover = function(dir){
       var visibles = gvVisibles();
       var p = visibles.indexOf(gvIdx);
-      gvIdx = visibles[(p - 1 + visibles.length) % visibles.length];
+      gvIdx = visibles[(p + dir + visibles.length) % visibles.length];
       gvPintar();
-    });
-    document.getElementById('gv-next').addEventListener('click', function(){
-      var visibles = gvVisibles();
-      var p = visibles.indexOf(gvIdx);
-      gvIdx = visibles[(p + 1) % visibles.length];
-      gvPintar();
-    });
+    };
+    document.getElementById('gv-prev').addEventListener('click', function(){ gvMover(-1); gvReiniciar(); });
+    document.getElementById('gv-next').addEventListener('click', function(){ gvMover(1); gvReiniciar(); });
 
     if(gvChips){
       gvChips.addEventListener('click', function(e){
@@ -943,8 +934,20 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
         gvIdx = gvVisibles()[0];
         gvPintarThumbs();
         gvPintar();
+        gvReiniciar();
       });
     }
+
+    /* ---------- auto-avance cada 1s ---------- */
+    var gvMain = document.querySelector('.gv-main');
+    var gvTimer = setInterval(function(){ gvMover(1); }, 1000);
+    var gvReiniciar = function(){ clearInterval(gvTimer); gvTimer = setInterval(function(){ gvMover(1); }, 1000); };
+    if(gvMain){
+      gvMain.addEventListener('mouseenter', function(){ clearInterval(gvTimer); });
+      gvMain.addEventListener('mouseleave', gvReiniciar);
+    }
+    gvThumbsWrap.addEventListener('mouseenter', function(){ clearInterval(gvTimer); });
+    gvThumbsWrap.addEventListener('mouseleave', gvReiniciar);
 
     gvPintarThumbs();
     gvPintar();

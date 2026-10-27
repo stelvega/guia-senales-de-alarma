@@ -126,10 +126,14 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
   .gv-arrow:hover{background:var(--marca);color:#fff;border-color:var(--marca)}
   .gv-frame{position:relative;flex:1;max-width:380px;margin:0 auto;aspect-ratio:3/4;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--sombra);cursor:zoom-in}
   .gv-frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .gv-card{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(160deg,var(--marca) 0%,var(--marca-osc) 100%);color:#fff;padding:26px 22px;cursor:default}
-  .gv-card .tag{display:inline-block;background:rgba(255,255,255,.18);font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;align-self:flex-start}
-  .gv-card h4{font-size:1.05rem;margin-bottom:10px}
-  .gv-card p{font-size:.85rem;line-height:1.45;opacity:.92}
+  .gv-card{width:100%;height:100%;display:flex;flex-direction:column;background:#fff;color:var(--tinta);cursor:default;overflow-y:auto}
+  .gv-card-img{width:100%;aspect-ratio:16/10;object-fit:cover;flex:0 0 auto}
+  .gv-card-body{padding:14px 16px 18px}
+  .gv-card-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .gv-card-badges span{background:rgba(108,79,160,.1);color:var(--marca-osc);font-size:.6rem;font-weight:800;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .gv-card .tag{display:inline-block;background:rgba(242,153,74,.15);color:var(--acento-osc);font-size:.62rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:8px}
+  .gv-card h4{color:var(--marca-osc);font-size:.98rem;margin-bottom:8px}
+  .gv-card p{font-size:.76rem;line-height:1.45;color:var(--tinta-2);margin-bottom:8px}
   .gv-contador{position:absolute;bottom:10px;right:10px;background:rgba(36,26,51,.72);color:#fff;font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px}
   .gv-caption{position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,.94);color:var(--marca-osc);font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px}
   .gv-thumbs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;padding:0 4px}
@@ -830,7 +834,7 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
   var gvFrame = document.getElementById('gv-frame');
   if(gvFrame){
     var GV_SLIDES = [
-      {cat:'guia', tipo:'card', titulo:'Extracto de la Guía', texto:'Patrón, no señal aislada: ¿se repite? ¿pasa en más de un contexto? ¿es un cambio respecto de cómo es siempre? Las 3 preguntas que organizan toda la guía.'},
+      {cat:'guia', tipo:'card'},
       {cat:'cartas', tipo:'img', src:'img/preview-cartas.jpg', alt:'Tarjetas feliz, triste, enojado y aburrido', caption:'Cartas de Comunicación'},
       {cat:'plantillas', tipo:'img', src:'img/preview-plantillas.jpg', alt:'Tarjetas de caritas hoja 2', caption:'Plantillas de Dibujo'},
       {cat:'cartas', tipo:'img', src:'img/preview-cartas-2.jpg', alt:'Tarjetas quiero contarte algo, quiero un abrazo, tengo hambre', caption:'Cartas de Comunicación'},
@@ -875,7 +879,16 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
           '<span class="gv-contador">'+pos+' / '+visibles.length+'</span>';
         gvFrame.onclick = function(){ abrirLB(s.src, s.alt); };
       } else {
-        gvFrame.innerHTML = '<div class="gv-card"><span class="tag">'+s.titulo+'</span><h4>Cómo leer las señales</h4><p>'+s.texto+'</p></div>' +
+        gvFrame.innerHTML = '<div class="gv-card">' +
+          '<img class="gv-card-img" src="img/hero.jpg" alt="Guía Señales de Alarma">' +
+          '<div class="gv-card-body">' +
+            '<div class="gv-card-badges"><span>Descarga inmediata</span><span>Para familias, docentes y profesionales</span></div>' +
+            '<span class="tag">Guía principal</span>' +
+            '<h4>Guía Señales de Alarma</h4>' +
+            '<p>Organizada en 4 secciones por edad: niños pequeños, niños en edad escolar, adolescentes, y señales de que tu hijo/a podría estar lastimando a otro. Con juegos, preguntas por edad y señales de alerta en cada etapa.</p>' +
+            '<p><b>Cómo leer las señales:</b> ¿se repite? ¿pasa en más de un contexto? ¿es un cambio respecto de cómo es siempre? Las 3 preguntas que organizan toda la guía.</p>' +
+            '<p>+ Directorio de ayuda (líneas de denuncia en Argentina) y hoja de registro ABC con enfoque de ciencia de la conducta.</p>' +
+          '</div></div>' +
           '<span class="gv-contador">'+pos+' / '+visibles.length+'</span>';
         gvFrame.onclick = null;
       }

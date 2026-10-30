@@ -233,9 +233,11 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
   .porque-item p{font-size:.88rem;color:var(--tinta-2)}
 
   /* ---------- EDADES ---------- */
-  .edades{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-  @media(max-width:760px){ .edades{grid-template-columns:1fr} }
+  .edades{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+  @media(max-width:860px){ .edades{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:480px){ .edades{grid-template-columns:1fr} }
   .edad-card{background:var(--bg-2);border:1px solid var(--linea);border-radius:14px;padding:18px;text-align:center}
+  .edad-card.proximamente{background:rgba(108,79,160,.06);border-style:dashed}
   .edad-card .num{font-size:1.5rem;font-weight:900;color:var(--marca)}
   .edad-card .tit{font-weight:800;margin:4px 0;font-size:.95rem}
   .edad-card .d{font-size:.8rem;color:var(--tinta-2)}
@@ -516,6 +518,7 @@ src="https://www.facebook.com/tr?id=PIXEL_ID_PENDIENTE&ev=PageView&noscript=1"
       <div class="edad-card"><div class="num">2-7</div><div class="tit">Cartas de Comunicación</div><div class="d">El punto fuerte para chicos que todavía no tienen las palabras — y más si hay retraso del lenguaje o mutismo selectivo.</div></div>
       <div class="edad-card"><div class="num">4-9</div><div class="tit">Packs de juegos</div><div class="d">Juegos proyectivos y de atención, pensados por franja etaria dentro de ese rango.</div></div>
       <div class="edad-card"><div class="num">3+</div><div class="tit">Plantillas de dibujo</div><div class="d">Se adaptan solas a lo que el chico/a ya sepa dibujar, sin techo de edad real.</div></div>
+      <div class="edad-card proximamente"><div class="num">10-18</div><div class="tit">Adolescencia — Próximamente</div><div class="d">Estamos preparando contenido específico para preadolescentes y adolescentes.</div></div>
     </div>
   </div>
 </section>

@@ -73,8 +73,8 @@ src="https://www.facebook.com/tr?id=1205283937799798&ev=PageView&noscript=1"
   /* ---------- HERO CARRUSEL ---------- */
   .hero-carrusel{position:relative;height:clamp(480px,78vh,640px);overflow:hidden;background:var(--marca-osc)}
   @media(max-width:700px){ .hero-carrusel{height:560px} }
-  .hero-fijo{position:relative;height:clamp(480px,78vh,640px);overflow:hidden;background:var(--marca-osc) center/cover no-repeat;display:flex;align-items:center}
-  @media(max-width:700px){ .hero-fijo{height:620px} }
+  .hero-fijo{position:relative;min-height:clamp(480px,78vh,640px);background:var(--marca-osc) center/cover no-repeat;display:flex;align-items:center;padding:48px 0}
+  @media(max-width:700px){ .hero-fijo{min-height:auto;padding:40px 0} }
   .hero-fijo .hc-contenido .kicker,.hero-fijo .hc-contenido h1,.hero-fijo .hc-contenido p.lead,.hero-fijo .hc-contenido .btn{opacity:0;transform:translateY(16px)}
   .hero-fijo .hc-contenido .kicker{animation:hcEntra .6s ease .05s forwards}
   .hero-fijo .hc-contenido h1{animation:hcEntra .6s ease .15s forwards}
@@ -333,13 +333,13 @@ src="https://www.facebook.com/tr?id=1205283937799798&ev=PageView&noscript=1"
 </div>
 
 <!-- HERO FIJO -->
-<section class="hero-fijo" id="hero-fijo" style="background-image:url('img/hero-principal.jpg')">
+<section class="hero-fijo" id="hero-fijo" style="background-image:url('img/hero-cartas.jpg')">
   <div class="hc-velo"></div>
   <div class="wrap"><div class="hc-contenido">
     <span class="kicker">🚨 Guía práctica para familias y docentes (de 1 a 9 años)</span>
     <h1>¿Sentís que tu hijo cambió de conducta drásticamente, se encierra o está a la defensiva, y no sabés si le están haciendo bullying o algo malo en la escuela?</h1>
     <p class="lead">No esperes a que sea tarde. Un sistema en PDF listo para imprimir en casa con herramientas de comunicación visual (tipo PECS), juegos y preguntas clave para que te cuente la verdad, incluso cuando no tiene palabras para explicarlo.</p>
-    <a class="btn grande" href="#oferta" data-cta>Quiero el kit de protección — $19.999 <small>Acceso inmediato al PDF y las 64 Cartas de regalo · Pago 100% seguro</small></a>
+    <a class="btn grande" href="#oferta" data-cta>Quiero el kit de protección — $19.999 <small>Acceso inmediato · Pago 100% seguro</small></a>
   </div></div>
 </section>
 

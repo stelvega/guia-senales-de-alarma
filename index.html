@@ -73,6 +73,13 @@ src="https://www.facebook.com/tr?id=1205283937799798&ev=PageView&noscript=1"
   /* ---------- HERO CARRUSEL ---------- */
   .hero-carrusel{position:relative;height:clamp(480px,78vh,640px);overflow:hidden;background:var(--marca-osc)}
   @media(max-width:700px){ .hero-carrusel{height:560px} }
+  .hero-fijo{position:relative;height:clamp(480px,78vh,640px);overflow:hidden;background:var(--marca-osc) center/cover no-repeat;display:flex;align-items:center}
+  @media(max-width:700px){ .hero-fijo{height:620px} }
+  .hero-fijo .hc-contenido .kicker,.hero-fijo .hc-contenido h1,.hero-fijo .hc-contenido p.lead,.hero-fijo .hc-contenido .btn{opacity:0;transform:translateY(16px)}
+  .hero-fijo .hc-contenido .kicker{animation:hcEntra .6s ease .05s forwards}
+  .hero-fijo .hc-contenido h1{animation:hcEntra .6s ease .15s forwards}
+  .hero-fijo .hc-contenido p.lead{animation:hcEntra .6s ease .25s forwards}
+  .hero-fijo .hc-contenido .btn{animation:hcEntra .6s ease .35s forwards}
   .hc-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;visibility:hidden;transition:opacity .7s ease;display:flex;align-items:center}
   .hc-slide.on{opacity:1;visibility:visible;z-index:1}
   .hc-velo{position:absolute;inset:0;background:linear-gradient(100deg,rgba(28,20,41,.88) 0%,rgba(28,20,41,.68) 40%,rgba(28,20,41,.28) 75%)}
@@ -325,47 +332,15 @@ src="https://www.facebook.com/tr?id=1205283937799798&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- HERO CARRUSEL -->
-<section class="hero-carrusel" id="hero-carrusel">
-  <div class="hc-slide on" style="background-image:url('img/hero-principal.jpg')">
-    <div class="hc-velo"></div>
-    <div class="wrap"><div class="hc-contenido">
-      <span class="kicker">Guía de prevención y detección · Para familias, docentes y profesionales</span>
-      <h1>¿Cómo te das cuenta si a tu hijo/a le está pasando algo que no te puede contar?</h1>
-      <p class="lead">Una guía organizada por edad con juegos, preguntas y herramientas de prevención para cuidar a tu hijo/a de maltrato, acoso escolar o grooming — y detectar a tiempo si algo ya está pasando.</p>
-      <a class="btn grande" href="#oferta" data-cta>Quiero la guía — $19.999 <small>PDF digital · Acceso inmediato</small></a>
-    </div></div>
-  </div>
-  <div class="hc-slide" style="background-image:url('img/despues.jpg')">
-    <div class="hc-velo"></div>
-    <div class="wrap"><div class="hc-contenido">
-      <span class="kicker">Bono 1 · Incluido gratis</span>
-      <h1>64 Cartas de Comunicación, de regalo</h1>
-      <p class="lead">Para que tu hijo/a señale cómo se siente, aunque todavía no tenga las palabras para explicarlo.</p>
-      <a class="btn grande" href="#oferta" data-cta>Ver la oferta completa</a>
-    </div></div>
-  </div>
-  <div class="hc-slide" style="background-image:url('img/carrusel4.jpg')">
-    <div class="hc-velo"></div>
-    <div class="wrap"><div class="hc-contenido">
-      <span class="kicker">Todo en un solo lugar</span>
-      <h1>Un sistema completo, no un artículo más</h1>
-      <p class="lead">Guía + Cartas de Comunicación + Plantillas de Dibujo — todo en PDF, listo para imprimir en casa.</p>
-      <a class="btn grande" href="#oferta" data-cta>Quiero mi copia ahora</a>
-    </div></div>
-  </div>
-  <div class="hc-slide" style="background-image:url('img/carrusel-abrazo.jpg')">
-    <div class="hc-velo"></div>
-    <div class="wrap"><div class="hc-contenido">
-      <span class="kicker">Cuando ya no sabés qué hacer</span>
-      <h1>A veces ni vos entendés qué le está pasando</h1>
-      <p class="lead">Esta guía te da las herramientas para entender y acompañar a tiempo, antes de que la angustia se vuelva más difícil de resolver.</p>
-      <a class="btn grande" href="#oferta" data-cta>Quiero la guía — $19.999</a>
-    </div></div>
-  </div>
-  <button class="hc-arrow" id="hc-prev" type="button" aria-label="Anterior">‹</button>
-  <button class="hc-arrow" id="hc-next" type="button" aria-label="Siguiente">›</button>
-  <div class="hc-dots" id="hc-dots"></div>
+<!-- HERO FIJO -->
+<section class="hero-fijo" id="hero-fijo" style="background-image:url('img/hero-principal.jpg')">
+  <div class="hc-velo"></div>
+  <div class="wrap"><div class="hc-contenido">
+    <span class="kicker">🚨 Guía práctica para familias y docentes (de 1 a 9 años)</span>
+    <h1>¿Sentís que tu hijo cambió de conducta drásticamente, se encierra o está a la defensiva, y no sabés si le están haciendo bullying o algo malo en la escuela?</h1>
+    <p class="lead">No esperes a que sea tarde. Un sistema en PDF listo para imprimir en casa con herramientas de comunicación visual (tipo PECS), juegos y preguntas clave para que te cuente la verdad, incluso cuando no tiene palabras para explicarlo.</p>
+    <a class="btn grande" href="#oferta" data-cta>Quiero el kit de protección — $19.999 <small>Acceso inmediato al PDF y las 64 Cartas de regalo · Pago 100% seguro</small></a>
+  </div></div>
 </section>
 
 <!-- CONFIANZA -->
@@ -782,35 +757,6 @@ src="https://www.facebook.com/tr?id=1205283937799798&ev=PageView&noscript=1"
     mover(50);
   }
 
-  /* ---------- HERO CARRUSEL ---------- */
-  var hc = document.getElementById('hero-carrusel');
-  if(hc){
-    var hcSlides = hc.querySelectorAll('.hc-slide');
-    var hcDotsWrap = document.getElementById('hc-dots');
-    var hcIdx = 0;
-    hcSlides.forEach(function(s, i){
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.className = 'hc-dot' + (i===0 ? ' on' : '');
-      d.setAttribute('aria-label', 'Ir al slide '+(i+1));
-      d.addEventListener('click', function(){ hcIr(i); hcReiniciar(); });
-      hcDotsWrap.appendChild(d);
-    });
-    var hcDots = hcDotsWrap.querySelectorAll('.hc-dot');
-    var hcIr = function(i){
-      hcSlides[hcIdx].classList.remove('on');
-      hcDots[hcIdx].classList.remove('on');
-      hcIdx = (i + hcSlides.length) % hcSlides.length;
-      hcSlides[hcIdx].classList.add('on');
-      hcDots[hcIdx].classList.add('on');
-    };
-    var hcTimer = setInterval(function(){ hcIr(hcIdx+1); }, 7000);
-    var hcReiniciar = function(){ clearInterval(hcTimer); hcTimer = setInterval(function(){ hcIr(hcIdx+1); }, 7000); };
-    document.getElementById('hc-prev').addEventListener('click', function(){ hcIr(hcIdx-1); hcReiniciar(); });
-    document.getElementById('hc-next').addEventListener('click', function(){ hcIr(hcIdx+1); hcReiniciar(); });
-    hc.addEventListener('mouseenter', function(){ clearInterval(hcTimer); });
-    hc.addEventListener('mouseleave', hcReiniciar);
-  }
 
   /* ---------- CARRUSEL: auto-avance ---------- */
   var track = document.getElementById('carrusel');
